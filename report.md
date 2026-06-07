@@ -1296,12 +1296,19 @@ Trong phần giải pháp, khi nghi ngờ tài khoản bị compromise, AI đề
 - **Ảnh chụp các test case AI đã tạo:**
 ![Ảnh chụp test case AI](./screenshots/req3/ai_res_clarify.jpg)
 - **Lý do AI không thể tạo một số edge test case:** đầu tiên là do AI thiếu trải nghiệm thực tế, có một lỗi là dây chẻ nhánh quá ngắn nên không thể vừa ghim dây đèn và tai nghe, điều này chỉ có người dùng trải nghiệm mới phát hiện được. Thứ hai là AI bị giới hạn bởi dữ liệu dùng để train, có nghĩa là mô hình sẽ tạo test case từ những pattern có sẵn do đó không thể tạo ra test case với hành vi vô lý như của con người (chẳng hạn nhúng tai nghe vào nước hay đem đốt).
-### 3.Link các video test execution (Youtube):
+### 3. Link các video test execution (Youtube)
 - TC-01: Kiểm tra tình trạng vật lý tai nghe (https://youtube.com/shorts/SAaBfRVrx1U?feature=share)
 - TC-02: Kiểm tra khả năng kết nối máy tính của tai nghe (https://youtube.com/shorts/evg57BHlFAk?feature=share)
 - TC-05: Kiểm tra nút điều chỉnh âm lượng (https://youtube.com/shorts/K8q_6F-e8Js?feature=share)
 - TC-10: Kiểm tra độ thoải mái khi đeo tai nghe trong thời gian ngắn (https://youtube.com/shorts/eQclzmQN6HM?feature=share)
 - TC-11: Kiểm tra độ dài nhánh chẻ dây phù hợp vị trí các cổng của Laptop (https://youtube.com/shorts/wO7onPzsTok?feature=share)
+### 4. Báo cáo các bug tìm được
+- Số lượng lỗi tìm được: 2
+
+| Defect ID | TC ID | Mô tả lỗi | Môi trường kiểm thử | Các bước tái hiện | Kết quả mong đợi | Kết quả thực tế | Severity | Priority |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :---: | :---: |
+| **DEF-01** | TC-01 | Đệm tai của tai nghe Rapoo VH520C dễ bị bong tróc khi đeo. | Tai nghe Rapoo VH520C; kiểm tra vật lý bên ngoài trước khi sử dụng. | 1. Quan sát tổng thể tai nghe.<br>2. Kiểm tra phần đệm tai, gọng tai, micro, dây và jack/cổng cắm USB.<br>3. Đeo tai nghe và quan sát tình trạng đệm tai khi sử dụng.<br>4. Kiểm tra xem có hiện tượng nứt, gãy, bong tróc, lỏng dây hoặc biến dạng không. | Tai nghe không bị nứt/gãy; đệm tai còn chắc chắn; dây và đầu cắm không bị hở; micro có thể điều chỉnh bình thường. | Đệm tai dễ bị bong tróc khi đeo. Các bộ phận còn lại của tai nghe vẫn ổn. | Low | Low |
+| **DEF-02** | TC-11 | Đoạn dây chẻ nhánh của tai nghe quá ngắn, không thể cắm đồng thời jack âm thanh 3.5mm và đầu USB vào laptop khi hai cổng nằm xa nhau. | Tai nghe Rapoo VH520C; laptop có cổng âm thanh 3.5mm và cổng USB nằm xa nhau, khác cạnh máy hoặc cách xa nhau. | 1. Xác định vị trí cổng âm thanh 3.5mm và cổng USB trên laptop dùng để test.<br>2. Cắm jack âm thanh 3.5mm vào laptop trước.<br>3. Thử kéo đầu USB sang cổng USB gần nhất để cắm nguồn LED.<br>4. Kiểm tra xem dây có bị căng, bị hụt hoặc kéo ghì đầu cắm còn lại ra không. | Đoạn dây chẻ nhánh từ điểm tách dây đến đầu jack 3.5mm và USB phải đủ dài và linh hoạt, cho phép cắm đồng thời cả hai đầu vào laptop một cách thoải mái. | Đoạn dây chẻ nhánh quá ngắn, không thể gắn cả hai đầu vào laptop cùng lúc. | Medium | Medium |
 ---
 
 ## Phần 4: QA/QC role mindmap
@@ -1313,3 +1320,90 @@ Trong phần giải pháp, khi nghi ngờ tài khoản bị compromise, AI đề
   - Phần Trách nhiệm chính được gộp chung cho cả QA/QC là không hợp lý, đối với QA thì sẽ không nên có các trách nhiệm như chuẩn bị test data, thiết kế test case.
   - Mục Làm việc với các vai trò khác chưa hợp lý vì đang bị nhập nhằng giữa trách nhiệm các vai trò đó và Tester. Ví dụ nhánh Business Analyst -> Làm rõ yêu cầu, không rõ việc "Làm rõ yêu cầu" là trách nhiệm Tester hay Business Analyst.
   - Mục Quality Control có "Xác nhận sản phẩm đáp ứng yêu cầu", đây là việc của Product Owner hoặc khách hàng ở giai đoạn Acceptance Testing. Quality Control chỉ có trách nhiệm đảm bảo, cung cấp dữ liệu và báo cáo lỗi.
+
+---
+## AI Critique
+  - Mô hình sử dụng: ChatGPT
+  - Đánh giá:
+  Đầu tiên, trong phần yêu cầu 1, khi tôi gửi các ảnh để ChatGPT tổng hợp và tạo nội dung markdown, ChatGPT đã thêm vào các nội dung không hề có trong ảnh như mô tả công việc hay kỹ năng yêu cầu. Trong yêu cầu 2, khi yêu cầu giải thích các lỗi phần mềm, ChatGPT giải thích một cách rất cơ bản, thiếu chiều sâu kỹ thuật, một số từ được dịch từ Tiếng Anh sang Tiếng Việt máy móc, sai nghĩa. Việc ChatGPT mắc các lỗi này do tôi prompt chưa đủ chính xác và chưa đủ ngữ cảnh, đồng thời cũng do mô hình LLM thường chỉ dựa vào xác suất và dữ liệu đã train để tạo câu trả lời. Do đó không nên tin vào những output mà AI tạo mà phải kiểm chứng xem chúng có chính xác không. Và khi prompt ta nên prompt với đủ ngữ cảnh và đủ thông tin.
+---
+## Mandatory Disclosure
+
+Các tài liệu gồm kịch bản kiểm thử (test cases), báo cáo thị trường việc làm QA/QC, báo cáo lỗi phần mềm (software defect report) và sơ đồ tư duy (mindmap) ban đầu đều được tạo bởi ChatGPT. Tôi đã xem xét và chỉnh sửa phần thị trường việc làm ở Yêu cầu 1 để chỉ giữ lại những thông tin có ảnh chụp màn hình hoặc liên kết nguồn chứng minh; điều chỉnh phần báo cáo lỗi phần mềm ở Yêu cầu 2 để tăng tính kỹ thuật và đảm bảo tính chính xác; đồng thời kiểm tra kỹ các kịch bản kiểm thử sản phẩm vật lý ở Yêu cầu 3 trước khi đưa vào báo cáo, cũng như bổ sung thêm 5 kịch bản kiểm thử khác.
+
+Tôi đã xác minh các thông tin chi tiết về việc kiểm thử sản phẩm vật lý, bao gồm kết quả thực hiện kiểm thử thực tế, ảnh chụp màn hình minh chứng và các trường hợp biên (edge cases) nếu có. Danh sách minh chứng nộp kèm cuối cùng, phần tự đánh giá, nhận xét cá nhân và mọi quan sát kiểm thử thực tế đều do chính tôi tự viết hoặc xác nhận.
+
+Báo cáo Kiểm toán AI (AI Audit Report) chi tiết được đính kèm ở phần Phụ lục A. Tôi xác nhận rằng mình không sử dụng AI để tạo ra bất kỳ sản phẩm nào thuộc danh mục bị nghiêm cấm dưới đây.
+
+## Privacy & Responsible AI Use Checklist
+
+
+### 1. Before I use AI
+
+- [x] I confirmed the AI Use Category assigned to this assignment.
+- [x] I have declared which AI tool(s) I will use in my prompt log.
+- [x] I have read the AI Use Agreement for this course.
+- [x] I understand which artifacts MUST NOT be AI-generated.
+
+### 2. While I am using AI
+
+- [x] I did not enter personal data of classmates, customers, or patients.
+- [x] I did not paste copyrighted reading materials wholesale into the AI.
+- [x] I did not paste proprietary employer or open-source license-restricted code.
+- [x] I logged each prompt and AI response into `prompt_log.md` with timestamp.
+
+### 3. Before I submit my work
+
+- [x] All AI-generated artifacts are tagged in the AI Audit Report.
+- [x] All citations from AI have been verified, and the sources actually exist.
+- [x] All AI-generated code has been executed and tested.
+- [x] My 200–300-word AI Critique is included in the report.
+- [x] The Mandatory Disclosure paragraph is included at the end of my report.
+- [x] I attached the AI Use Disclosure Form.
+- [x] I am ready for a 5–7-minute random oral defense after submission.
+
+### 4. Final Statement
+
+Final responsibility for the accuracy, originality, and integrity of this submission rests with me. Any undisclosed AI use is treated as academic misconduct.
+
+**Signature:**  Luan
+**Student name:**  Nguyễn Thành Luân
+**Student ID:** 23127296
+**Class / Cohort:**  23KTPM3
+**Course**: CS423 / CSC13003 – Software Testing
+
+## Assessment & Self-Assessment Template
+
+The AI-first rubric below replaces the previous rubric. Total = **100 points**.  
+Every homework has an **AI Compliance** column worth **15–20 points**. Missing the **AI Audit Report / prompt log / critique** forfeits the entire AI Compliance column.
+
+| No. | Criteria | Grade | Self-Assessed Grade |
+|---|---|---:|---:|
+| 1 | Job Market 2026+ (10 jobs × 3 pts + AI Impact) | 40 | 40 / 40 |
+| 2 | Software Defects 2022–2026 (20 defects) | 20 | 20 / 20 |
+| 3 | Physical-product test design (15 TCs + 5 videos) | 25 | 25 / 25 |
+| AI-1 | [AI-02] AI Audit Report (5-section) attached | 8 | 8 / 8 |
+| AI-2 | AI Critique 200–300 words + [AI-03] Disclosure attached | 4 | 4 / 4 |
+| AI-3 | [AI-05] Checklist signed + anti-cheat artifacts | 3 | 3 / 3 |
+| **Total** |  | **100** | **100 / 100** |
+
+
+## Git Commit Log
+
+| No. | Commit Hash | Date | Commit Message | Related Requirement |
+|---|---|---|---|---|
+| 1 | `________` | `YYYY-MM-DD` | Initial project structure and folders | General |
+| 2 | `________` | `YYYY-MM-DD` | Add Requirement 1 job market report | Requirement 1 |
+| 3 | `________` | `YYYY-MM-DD` | Add Requirement 2 software defects report | Requirement 2 |
+| 4 | `________` | `YYYY-MM-DD` | Add Requirement 3 physical product test cases | Requirement 3 |
+| 5 | `________` | `YYYY-MM-DD` | Add videos and physical product evidence | Requirement 3 |
+| 6 | `________` | `YYYY-MM-DD` | Add AI Audit Report and prompt logs | AI Compliance |
+| 7 | `________` | `YYYY-MM-DD` | Add AI Critique, disclosure, and privacy checklist | AI Compliance |
+| 8 | `________` | `YYYY-MM-DD` | Final review and formatting before submission | Final Submission |
+
+### Git Commit Evidence
+
+The Git commit history shows the development process of this homework, including updates to each requirement and AI compliance artifact. Screenshots of the Git commit log are included in the submission evidence folder.
+
+```bash
+git log --oneline --decorate --graph --all
