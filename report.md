@@ -1284,13 +1284,32 @@ Trong phần giải pháp, khi nghi ngờ tài khoản bị compromise, AI đề
 - **Serial number:** 21C01V****002662
 - **Chức năng chính cần kiểm thử:** phát âm thanh, micro, điều chỉnh âm lượng, đèn LED/RGB, độ thoải mái khi đeo, độ ổn định của dây/kết nối.
 - **Môi trường kiểm thử đề xuất:** Laptop Windows, cổng USB, cổng âm thanh 3.5mm, phần mềm ghi âm, trình kiểm tra mic, loa.
-
+- **Ảnh chụp thẻ sinh viên với thiết bị:**
+![Ảnh chụp thẻ sinh viên](./screenshots/req3/device_studentid.jpg)
 
 ### 2. Bảng test cases
-- Tổng số test case: 15
-- Số test case được thực hiện: 5 test case 
-- Xem nội dung chi tiết các test case tại file sau: [Chi tiết test case](test_case/rapoo_vh520c_test_cases.xlsx)
-- Số test case AI đã tạo: 10 
-- Số test case AI không tạo: 5
-- Ảnh chụp các test case AI đã tạo:
+- **Tổng số test case:** 15
+- **Số test case được thực hiện:** 5 test case 
+- **Xem nội dung chi tiết các test case tại file sau:** [Chi tiết test case](test_case/rapoo_vh520c_test_cases.xlsx)
+- **Số test case AI đã tạo:** 10 
+- **Số test case AI không tạo:** 5
+- **Ảnh chụp các test case AI đã tạo:**
 ![Ảnh chụp test case AI](./screenshots/req3/ai_res_clarify.jpg)
+- **Lý do AI không thể tạo một số edge test case:** đầu tiên là do AI thiếu trải nghiệm thực tế, có một lỗi là dây chẻ nhánh quá ngắn nên không thể vừa ghim dây đèn và tai nghe, điều này chỉ có người dùng trải nghiệm mới phát hiện được. Thứ hai là AI bị giới hạn bởi dữ liệu dùng để train, có nghĩa là mô hình sẽ tạo test case từ những pattern có sẵn do đó không thể tạo ra test case với hành vi vô lý như của con người (chẳng hạn nhúng tai nghe vào nước hay đem đốt).
+### 3.Link các video test execution (Youtube):
+- TC-01: Kiểm tra tình trạng vật lý tai nghe (https://youtube.com/shorts/SAaBfRVrx1U?feature=share)
+- TC-02: Kiểm tra khả năng kết nối máy tính của tai nghe (https://youtube.com/shorts/evg57BHlFAk?feature=share)
+- TC-05: Kiểm tra nút điều chỉnh âm lượng (https://youtube.com/shorts/K8q_6F-e8Js?feature=share)
+- TC-10: Kiểm tra độ thoải mái khi đeo tai nghe trong thời gian ngắn (https://youtube.com/shorts/eQclzmQN6HM?feature=share)
+- TC-11: Kiểm tra độ dài nhánh chẻ dây phù hợp vị trí các cổng của Laptop (https://youtube.com/shorts/wO7onPzsTok?feature=share)
+---
+
+## Phần 4: QA/QC role mindmap
+
+![Mindmap](./mindmap/qaqc_mindmap.png)
+
+
+- Các điểm sai trong mindmap trên: 
+  - Phần Trách nhiệm chính được gộp chung cho cả QA/QC là không hợp lý, đối với QA thì sẽ không nên có các trách nhiệm như chuẩn bị test data, thiết kế test case.
+  - Mục Làm việc với các vai trò khác chưa hợp lý vì đang bị nhập nhằng giữa trách nhiệm các vai trò đó và Tester. Ví dụ nhánh Business Analyst -> Làm rõ yêu cầu, không rõ việc "Làm rõ yêu cầu" là trách nhiệm Tester hay Business Analyst.
+  - Mục Quality Control có "Xác nhận sản phẩm đáp ứng yêu cầu", đây là việc của Product Owner hoặc khách hàng ở giai đoạn Acceptance Testing. Quality Control chỉ có trách nhiệm đảm bảo, cung cấp dữ liệu và báo cáo lỗi.
